@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.clertonf.CarModelsApp"
+      "bundleIdentifier": "br.com.carmodelsapp"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.clertonf.CarModelsApp"
+      "package": "br.com.carmodelsapp"
     },
     "web": {
       "bundler": "metro",

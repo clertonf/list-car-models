@@ -1,4 +1,4 @@
-package com.clertonf.CarModelsApp
+package br.com.carmodelsapp
 
 import android.app.Application
 import android.content.res.Configuration
