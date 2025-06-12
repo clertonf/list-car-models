@@ -55,7 +55,7 @@ export function ScrollViewContainer({
           ]}
           className="justify-center items-center"
         >
-          <StatusBar backgroundColor="red" barStyle="light-content" />
+          <StatusBar backgroundColor="red" barStyle="dark-content" />
         </Animated.View>
       )}
 
