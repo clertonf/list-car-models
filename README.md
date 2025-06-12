@@ -97,7 +97,8 @@ npm run web
 
 ---
 
-📌 **Observações finais**
+📌 **Observações finais**:
+
 O app atende 100% dos requisitos do desafio.
 
 ---
