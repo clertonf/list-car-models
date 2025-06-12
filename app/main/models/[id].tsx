@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
 import { FlatList, RefreshControl } from "react-native";
 
 import {
@@ -10,12 +9,11 @@ import {
   Screen,
   Text,
 } from "@/components";
+import { useRefresh } from "@/hooks";
 import { CarModel, getModelsByBrandId } from "@/services";
 
 export default function ModelsScreen() {
   const { id } = useLocalSearchParams();
-
-  const [refreshing, setRefreshing] = useState(false);
 
   const {
     data: models = [],
@@ -28,14 +26,7 @@ export default function ModelsScreen() {
     enabled: !!id,
   });
 
-  async function onRefresh() {
-    setRefreshing(true);
-    try {
-      await refetch();
-    } finally {
-      setRefreshing(false);
-    }
-  }
+  const { refreshing, onRefresh } = useRefresh(refetch);
 
   if (isError) {
     return (
@@ -62,6 +53,16 @@ export default function ModelsScreen() {
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+          ListHeaderComponent={
+            <Text className="text-lg font-semibold mb-2">
+              Modelos disponíveis
+            </Text>
+          }
+          ListEmptyComponent={
+            <Text className="text-center text-gray-500 mt-4">
+              Nenhum modelo encontrado.
+            </Text>
           }
         />
       )}

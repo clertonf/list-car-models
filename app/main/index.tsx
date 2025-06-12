@@ -1,5 +1,10 @@
-import { useState } from "react";
-import { FlatList, RefreshControl } from "react-native";
+import {
+  Alert,
+  FlatList,
+  RefreshControl,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
@@ -11,11 +16,15 @@ import {
   Screen,
   Text,
 } from "@/components";
+import { useAuth } from "@/contexts";
+import { useRefresh } from "@/hooks";
 import { CarBrand, getCarBrands } from "@/services";
+import { LogOut } from "lucide-react-native";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const [refreshing, setRefreshing] = useState(false);
+
+  const { logout } = useAuth();
 
   const {
     data: brands = [],
@@ -27,17 +36,29 @@ export default function HomeScreen() {
     queryFn: getCarBrands,
   });
 
+  const { refreshing, onRefresh } = useRefresh(refetch);
+
   const handlePress = (id: string) => {
     router.push(`/main/models/${id}`);
   };
 
-  async function onRefresh() {
-    setRefreshing(true);
-    try {
-      await refetch();
-    } finally {
-      setRefreshing(false);
-    }
+  async function handleLogout() {
+    Alert.alert(
+      "Sair",
+      "Você tem certeza que deseja sair?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Sair",
+          onPress: logout,
+          style: "destructive",
+        },
+      ],
+      { cancelable: true }
+    );
   }
 
   if (isError) {
@@ -46,9 +67,15 @@ export default function HomeScreen() {
 
   return (
     <Screen className="flex-1 p-4">
-      <Text bold variant="headingLarge" className="mb-4">
-        Marcas de Carros
-      </Text>
+      <View className="flex-row items-center justify-between mb-4">
+        <Text bold variant="headingLarge">
+          Marcas de Carros
+        </Text>
+
+        <TouchableOpacity onPress={handleLogout}>
+          <LogOut size={24} />
+        </TouchableOpacity>
+      </View>
 
       {isLoading ? (
         <ActivityIndicator size="small" color="gray" />
@@ -64,6 +91,16 @@ export default function HomeScreen() {
           )}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+          ListHeaderComponent={
+            <Text className="text-lg font-semibold mb-2">
+              Marcas disponíveis
+            </Text>
+          }
+          ListEmptyComponent={
+            <Text className="text-center text-gray-500 mt-4">
+              Nenhuma marca encontrada.
+            </Text>
           }
         />
       )}
