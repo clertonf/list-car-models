@@ -1,50 +1,103 @@
-# Welcome to your Expo app 👋
+# CarModelsApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile simples para consulta de marcas e modelos de carros utilizando a API FIPE.
 
-## Get started
+📄 [Acesse aqui o PDF com o desafio original](./desafio-mobile.pdf)
 
-1. Install dependencies
+## ✅ Checklist do Desafio
 
-   ```bash
-   npm install
-   ```
+- [x] Tela de **Login** com validação usando React Hook Form + Zod
+- [x] Armazenamento de sessão via **AsyncStorage**
+- [x] Gerenciamento de usuário autenticado com **Context API**
+- [x] Redirecionamento automático com base na autenticação
+- [x] Tela **Home** com listagem de marcas (FIPE)
+- [x] Tela **Models** com listagem de modelos por marca
+- [x] Navegação com **Expo Router** (substituindo React Navigation)
+- [x] Estilo com **NativeWind + Tailwind CSS**
+- [x] Comunicação com API FIPE e API de login usando **Axios**
+- [x] **Toast** de feedback para erros e mensagens de status
+- [x] Responsividade e uso de FlatList com pull-to-refresh
+- [x] Código modular, componentizado, organizado e tipado
+- [x] Aplicação utilizando **TypeScript**
+- [x] Textos, commits e estrutura seguindo boas práticas
+- [x] Sem uso de paginação (não exigido pelo desafio)
 
-2. Start the app
+## Tecnologias Utilizadas
 
-   ```bash
-   npx expo start
-   ```
+- **React Native + Expo**
+- **Expo Router**
+- **React Query**
+- **React Hook Form + Zod**
+- **Tailwind CSS + Nativewind**
+- **Axios**
+- **AsyncStorage**
+- **Context API**
+- **Lucide React Native**
+- **Toast Message**
 
-In the output, you'll find options to open the app in a
+## Como rodar o projeto
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Instale as dependências
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. (Apenas para iOS/macOS) Instale os pods
 
-## Learn more
+```bash
+npx pod-install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Inicie o servidor Expo
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm run start
+```
 
-## Join the community
+### 4. Rode emulador Android
 
-Join our community of developers creating universal apps.
+```bash
+npm run android
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 5. Rode emulador iOS (macOS)
+
+```bash
+npm run ios
+```
+
+### 6. Rode no navegador (modo web)
+
+```bash
+npm run web
+```
+
+## Scripts disponíveis
+
+- `npm run start` — inicia o servidor Expo
+- `npm run android` — executa no emulador Android
+- `npm run ios` — executa no simulador iOS
+- `npm run lint` — roda o lint
+
+## Estrutura do Projeto
+
+```
+/app
+  ├── auth/       → telas públicas (login)
+  ├── main/       → telas privadas (home, models)
+  ├── _layout.tsx → controle de navegação por segmento
+/assets           → fontes e imagens
+/components       → componentes visuais reutilizáveis
+/config           → configs como toasts
+/contexts         → contexto de autenticação
+/schemas          → validações Zod
+/services         → chamadas HTTP e tipos de dados
+```
+
+---
+
+📌 **Observações finais**
+O app atende 100% dos requisitos do desafio.
+
+---

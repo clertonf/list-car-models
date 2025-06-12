@@ -1,29 +1,65 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useFonts } from "expo-font";
+import { Stack, useRouter, useSegments } from "expo-router";
+import { useEffect } from "react";
+import { ActivityIndicator, View } from "react-native";
+import Toast from "react-native-toast-message";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { AuthProvider, useAuth } from "@/contexts";
+
+import { toastConfig } from "@/config";
+import "../global.css";
+
+const queryClient = new QueryClient();
+
+function AppRoutes() {
+  const router = useRouter();
+  const segments = useSegments();
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (auth.loading) return;
+
+    const inAuthGroup = segments[0] === "auth";
+    const isNotFound = segments[0] === "+not-found";
+
+    if (!auth.user && !inAuthGroup) {
+      router.replace("/auth/login");
+    } else if (auth.user && (inAuthGroup || isNotFound)) {
+      router.replace("/main");
+    }
+  }, [auth.user, auth.loading, segments, router]);
+
+  if (auth.loading) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return <Stack screenOptions={{ headerShown: false }} />;
+}
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  const [fontsLoaded] = useFonts({
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
+  if (!fontsLoaded) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" />
+      </View>
+    );
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <AppRoutes />
+        <Toast config={toastConfig} />
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }

@@ -17,9 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13B07F961A680F5B00A75B9A /* CarModelsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CarModelsApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "CarModelsApp/Images.xcassets"; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "CarModelsApp/Info.plist"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* CarModelsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarModelsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarModelsApp/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarModelsApp/Info.plist; sourceTree = "<group>"; };
 		6726430570DDA300049FBADF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = CarModelsApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		7A0CBE878AA421FEE978A4DD /* Pods-CarModelsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarModelsApp.debug.xcconfig"; path = "Target Support Files/Pods-CarModelsApp/Pods-CarModelsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		805F050848EE6B38D8741173 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-CarModelsApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				6726430570DDA300049FBADF /* PrivacyInfo.xcprivacy */,
 			);
-			name = "CarModelsApp";
+			name = CarModelsApp;
 			sourceTree = "<group>";
 		};
 		1B32C288EAA438873EC4A120 /* ExpoModulesProviders */ = {
@@ -110,7 +110,7 @@
 			children = (
 				805F050848EE6B38D8741173 /* ExpoModulesProvider.swift */,
 			);
-			name = "CarModelsApp";
+			name = CarModelsApp;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -152,8 +152,8 @@
 			);
 			dependencies = (
 			);
-			name = "CarModelsApp";
-			productName = "CarModelsApp";
+			name = CarModelsApp;
+			productName = CarModelsApp;
 			productReference = 13B07F961A680F5B00A75B9A /* CarModelsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -270,6 +270,8 @@
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG/RNSVGFilters.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
@@ -283,6 +285,8 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNSVGFilters.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
@@ -341,8 +345,8 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = "CarModelsApp/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "CarModelsApp";
+				INFOPLIST_FILE = CarModelsApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CarModelsApp;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -355,8 +359,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.carmodelsapp";
-				PRODUCT_NAME = "CarModelsApp";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.carmodelsapp;
+				PRODUCT_NAME = CarModelsApp;
 				SWIFT_OBJC_BRIDGING_HEADER = "CarModelsApp/CarModelsApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -373,8 +377,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CarModelsApp/CarModelsApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "CarModelsApp/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "CarModelsApp";
+				INFOPLIST_FILE = CarModelsApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CarModelsApp;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -387,8 +391,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.carmodelsapp";
-				PRODUCT_NAME = "CarModelsApp";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.carmodelsapp;
+				PRODUCT_NAME = CarModelsApp;
 				SWIFT_OBJC_BRIDGING_HEADER = "CarModelsApp/CarModelsApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
